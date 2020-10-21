@@ -1,6 +1,16 @@
 extends layout.pug
 
 block content
-  form(method="post" action="/create")
-    label(for="_csrf")
-    input(type="submit")
+    form.form-group(method="post" action="/create")
+        label(for="_csrf")
+        input(type="hidden", id="_csrf", name="_csrf")
+        label(for="firstName") First Name
+        input(type="text", id="firstName", name="firstName")
+        label(for="lastName") Last Name
+        input(type="text", id="lastName", name="lastName")
+        label(for="email") Email
+        input(type="email", id="email", name="email")
+        label(for="password") Password
+        input(type="password", id="password", name="password")
+        label(for="confirmedPassword") Verify Password
+        input(type="password", id="confirmedPassword", name="confirmedPassword")

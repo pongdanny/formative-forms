@@ -6,6 +6,13 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const csrfProtection = csrf({ cookie: true });
+
+app.use(
+  express.static(
+    "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  )
+);
+
 app.use(cookieParser());
 
 app.set("view engine", "pug");
@@ -15,7 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/create", csrfProtection, (req, res) => {
-  res.render();
+  res.render("create-normal", { csrfToken: req.csrfToken() });
 });
 
 const users = [
