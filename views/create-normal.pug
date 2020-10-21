@@ -1,16 +1,23 @@
 extends layout.pug
 
 block content
-    form.form-group(method="post" action="/create")
+    if errors
+      ul.list-group
+        p The following errors were found:
+        each error in errors
+          li.list-group-item #{error}
+    form(method="post" action="/create")
         label(for="_csrf")
-        input(type="hidden", id="_csrf", name="_csrf")
+        input.form-control(type="hidden" name="_csrf" value=csrfToken)
         label(for="firstName") First Name
-        input(type="text", id="firstName", name="firstName")
+        input.form-control(type="text" id="firstName" name="firstName" value=firstName)
         label(for="lastName") Last Name
-        input(type="text", id="lastName", name="lastName")
+        input.form-control(type="text" id="lastName" name="lastName" value=lastName)
         label(for="email") Email
-        input(type="email", id="email", name="email")
+        input.form-control(type="email" id="email" name="email" value=email)
         label(for="password") Password
-        input(type="password", id="password", name="password")
+        input.form-control(type="password" id="password" name="password" value=password)
         label(for="confirmedPassword") Verify Password
-        input(type="password", id="confirmedPassword", name="confirmedPassword")
+        input.form-control(type="password" id="confirmedPassword" name="confirmedPassword" value=confirmedPassword)
+        p
+        input.btn-primary(type="submit" value="Create User")
