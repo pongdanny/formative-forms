@@ -6,6 +6,7 @@ block content
         p The following errors were found:
         each error in errors
           li.list-group-item #{error}
+
     form(method="post" action="/create")
         label(for="_csrf")
         input.form-control(type="hidden" name="_csrf" value=csrfToken)

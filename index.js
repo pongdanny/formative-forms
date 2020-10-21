@@ -41,15 +41,26 @@ app.post("/create", csrfProtection, (req, res) => {
       "The provided values for the password and password confirmation fields did not match."
     );
   }
-
-  res.render("create-normal", {
-    errors,
-    firstName,
-    lastName,
-    email,
-    password,
-    confirmedPassword,
-  });
+  if (errors.length) {
+    res.render("create-normal", {
+      errors,
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmedPassword,
+    });
+  } else {
+    console.log(users.length);
+    users.push({
+      id: users.length + 1,
+      firstName,
+      lastName,
+      email,
+    });
+    // console.log(users)
+    res.redirect("/");
+  }
 });
 
 const users = [
