@@ -1,0 +1,15 @@
+extends layout.pug
+
+block content
+    table
+        tr
+            th: h2 id
+            th: h2 First Name
+            th: h2 Last Name
+            th: h2 Email
+        tr
+            each user in users
+                td= user.id
+                td= user.firstName
+                td= user.lastName
+                td= user.email
