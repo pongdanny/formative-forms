@@ -14,10 +14,10 @@ const users = [
     id: 1,
     firstName: "Jill",
     lastName: "Jack",
-    email: "jill.jack@gmail.com"
-  }
+    email: "jill.jack@gmail.com",
+  },
 ];
-
+//added this comment as a test//
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 module.exports = app;
